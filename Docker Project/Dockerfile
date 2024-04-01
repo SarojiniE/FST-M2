@@ -1,17 +1,11 @@
-# Specify base image
-FROM node:18-alpine
+# Specify Base Image
+FROM alpine
 
-# Create working directory
+# Create a working directory
 WORKDIR /usr/app
 
-# Copy the package.json into the container
-COPY package.json ./ 
+# Install redis in alpine
+RUN apk add --update redis
 
-# Install depenedenciew
-RUN npm install
-
-# Copy the file into the container
-COPY ./ ./
-
-# Start the server
-CMD ["npm", "start"]
+# Start ths redis server
+CMD ["redis-server"]
