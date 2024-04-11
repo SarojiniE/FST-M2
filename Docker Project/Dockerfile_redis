@@ -1,0 +1,11 @@
+# Specify Base Image
+FROM alpine
+
+# Create a working directory
+WORKDIR /usr/app
+
+# Install redis in alpine
+RUN apk add --update redis
+
+# Start ths redis server
+CMD ["redis-server"]
